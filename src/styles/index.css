@@ -25,16 +25,16 @@ body {
 }
 .menu-container:nth-child(1) {
   order: 0;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   align-self: auto;
 }
 .item-list-container:nth-child(2) {
   order: 0;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   align-self: auto;
 }
 .item-container:nth-child(3) {
   order: 0;
-  flex: 2 1 auto;
+  flex: 1 1 auto;
   align-self: auto;
 }

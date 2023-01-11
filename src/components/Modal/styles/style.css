@@ -1,0 +1,35 @@
+.modal {
+  --bs-modal-bg: #181d31 !important;
+}
+.title-input {
+  margin: 25px;
+  text-align: end;
+}
+#title-input {
+  color: black;
+  font-weight: 600;
+}
+.note-input {
+  margin: 25px;
+}
+#note-input {
+  height: 100px;
+  color: black;
+  font-weight: 600;
+}
+#close-modal-btn {
+  background-color: #960808;
+  color: white;
+  transition: 250ms ease-in-out;
+}
+#close-modal-btn:hover {
+  background-color: #4d0000;
+}
+#submit-note-btn {
+  background-color: #272f4e;
+  color: white;
+  transition: 250ms ease-in-out;
+}
+#submit-note-btn:hover {
+  background-color: #47558d;
+}
