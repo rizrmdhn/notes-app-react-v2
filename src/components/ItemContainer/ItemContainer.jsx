@@ -10,6 +10,7 @@ export default function ItemContainer({ viewData }) {
         <ItemCard
           key={viewData.id}
           title={viewData.title}
+          createdAt={viewData.createdAt}
           body={viewData.body}
         />
       ) : (

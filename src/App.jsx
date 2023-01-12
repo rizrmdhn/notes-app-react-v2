@@ -77,7 +77,6 @@ class App extends Component {
 
   onGetDataHandler(notes) {
     this.setState({ viewData: notes });
-    console.log(this.state.viewData);
   }
 
   render() {

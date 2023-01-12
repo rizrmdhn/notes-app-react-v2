@@ -3,4 +3,28 @@
 }
 .item-card-container {
   width: 1000px;
+  height: 75vh;
+}
+.item-data-card {
+  height: 80vh;
+}
+.item-body-title {
+  margin: 25px;
+}
+.item-body-date {
+  margin: 25px;
+  display: flex;
+  border-bottom: 1px rgba(255, 255, 255, 0.10) solid;
+  width: 100%;
+}
+.bi-calendar3 {
+  margin-right: 25px;
+}
+.calendar-date {
+  margin-top: 4px;
+  margin-left: 100px;
+  margin-right: 25px;
+}
+.item-body-content {
+  margin: 25px;
 }
