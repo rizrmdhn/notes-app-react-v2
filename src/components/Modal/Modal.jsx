@@ -35,8 +35,13 @@ export default class Modal extends Component {
 
   onSubmitChangeEventHandler(event) {
     event.preventDefault();
-    console.log(this.state)
-    // this.props.addnote(this.state);
+    this.props.addnote(this.state);
+    this.setState(() => {
+      return {
+        title: "",
+        body: "",
+      };
+    });
   }
 
   render() {
@@ -56,10 +61,12 @@ export default class Modal extends Component {
               </h1>
               <button
                 type="button"
-                className="btn-close"
+                className="close-btn"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
             </div>
             <div className="modal-body">
               <div className="title-input">

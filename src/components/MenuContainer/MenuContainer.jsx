@@ -1,7 +1,10 @@
 import React from "react";
 import "./styles/styles.css";
 
-export default function MenuContainer() {
+export default function MenuContainer({ onSearchType }) {
+  const onSearchTypeProject = (event) => {
+    onSearchType(event.target.value);
+  };
   return (
     <div className="menu-container">
       <div className="add-note-container">
@@ -14,16 +17,17 @@ export default function MenuContainer() {
           <i className="bi bi-plus-lg"></i> Add Note
         </button>
       </div>
-      <div className="option-container">
+      <div className="option-container" onChange={onSearchTypeProject}>
         <div className="ActiveNotes-option form-check">
           <input
             className="form-check-input"
             type="radio"
             name="NotesOptions"
             id="ActiveNotes"
+            value="ActiveNotes"
             defaultChecked
           />
-          <label className="form-check-label" htmlFor="ActiveNotes">
+          <label className="ActiveNotes-form-label form-check-label" htmlFor="ActiveNotes">
             Active Notes
           </label>
         </div>
@@ -33,8 +37,9 @@ export default function MenuContainer() {
             type="radio"
             name="NotesOptions"
             id="ArchivedNotes"
+            value="ArchivedNotes"
           />
-          <label className="form-check-label" htmlFor="ArchivedNotes">
+          <label className="ArchivedNotes-form-label form-check-label" htmlFor="ArchivedNotes">
             Archived Notes
           </label>
         </div>

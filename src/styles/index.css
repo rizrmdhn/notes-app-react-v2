@@ -8,14 +8,14 @@
   font-weight: 500;
 }
 body {
-  background-color: #181d31 !important;
+  background-color: #181818 !important;
   color: white !important;
 }
 .App {
   overflow: hidden;
 }
 .body-container {
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -33,3 +33,11 @@
 #submit-note-btn:hover {
   background-color: #47558d;
 }
+.close-btn {
+  background-color: transparent;
+  border: none;
+}
+.bi-x-lg {
+  color: white !important;
+  font-size: 20px;
+}

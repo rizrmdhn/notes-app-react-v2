@@ -1,3 +1,41 @@
 .item-list-container {
   margin: 25px;
+  background-color: #1c1c1c;
+  width: 395px;
+  height: auto;
+}
+.item-list {
+  margin: 25px auto;
+  overflow-y: scroll;
+  height: 75vh;
+}
+.item-card {
+  height: 100px;
+  margin: 10px;
+  background-color: #181818;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.item-card > .card-title {
+  margin-left: -10px;
+}
+.item-card:hover {
+  background-color: #312EB5;
+}
+.item-card > .card-body {
+  height: 125px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.item-card > .card-body > .date {
+  margin-right: 5px;
+}
+.item-card > .card-body > .body {
+  margin-left: 5px;
+  width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

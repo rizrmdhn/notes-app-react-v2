@@ -1,0 +1,17 @@
+.unavaliable-note-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  height: 75vh;
+}
+.unavaliable-note {
+    margin: auto;
+    align-self: center;
+}
+.bi-file-earmark-text {
+  font-size: 100px;
+}

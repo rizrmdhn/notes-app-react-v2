@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { getInitialData } from "../src/utils";
 import Header from "./components/Header/Header";
 import ItemContainer from "./components/ItemContainer/ItemContainer";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
@@ -9,20 +10,71 @@ import "./styles/index.css";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      lists: getInitialData(),
+      unFilteredList: getInitialData(),
+    };
+
+    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+    this.onSearchTypeHandler = this.onSearchTypeHandler.bind(this);
   }
 
-  componentDidMount() {}
+  onAddNoteHandler({ title, body }) {
+    this.setState((prevState) => {
+      return {
+        lists: [
+          ...prevState.lists,
+          {
+            id: +new Date(),
+            title,
+            body,
+            createdAt: Date.now(),
+            archived: false,
+          },
+        ],
 
+        unFilteredList: [
+          ...prevState.unFilteredList,
+          {
+            id: +new Date(),
+            title,
+            body,
+            createdAt: Date.now(),
+            archived: false,
+          },
+        ],
+      };
+    });
+  }
+
+  onSearchTypeHandler(NotesOptions) {
+    const defaultValue = (this.state.projectList =
+      this.state.unFilteredList);
+    if (NotesOptions === "ActiveNotes") {
+      this.setState({
+        lists: this.state.unFilteredList.filter(
+          (lists) => lists.archived === false
+        ),
+      });
+      return defaultValue;
+    } else {
+      this.setState({
+        lists: this.state.unFilteredList.filter(
+          (lists) => lists.archived === true
+        ),
+      });
+    }
+  }
   render() {
     return (
       <div className="App">
         <Header />
         <div className="body-container">
-          <MenuContainer />
-          <ItemListContainer />
+          <MenuContainer onSearchType={this.onSearchTypeHandler} />
+          <ItemListContainer notes={this.state.lists} />
           <ItemContainer />
         </div>
-        <Modal />
+        <Modal addnote={this.onAddNoteHandler} />
       </div>
     );
   }
