@@ -12,6 +12,7 @@
 .dropdown-item {
   color: white !important;
   font-size: 20px;
+  cursor: pointer;
 }
 .dropdown-item:hover {
   background-color: #181818 !important;

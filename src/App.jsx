@@ -17,6 +17,9 @@ class App extends Component {
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onArchivedHandler = this.onArchivedHandler.bind(this);
+    this.onUndoArchivedHandler = this.onUndoArchivedHandler.bind(this);
     this.onSearchTypeHandler = this.onSearchTypeHandler.bind(this);
     this.onGetDataHandler = this.onGetDataHandler.bind(this);
   }
@@ -57,6 +60,33 @@ class App extends Component {
     });
   }
 
+  onDeleteHandler(id) {
+    const lists = this.state.lists.filter((list) => list.id !== id);
+    this.setState({ lists });
+  }
+
+  onArchivedHandler(id) {
+    const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
+    const ArcivedNotes = (NotesArchive[0].archived = true);
+    this.setState({ ArcivedNotes });
+    this.setState({
+      lists: this.state.unFilteredList.filter(
+        (lists) => lists.archived === false
+      ),
+    });
+  }
+
+  onUndoArchivedHandler(id) {
+    const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
+    const ActiveNotes = (NotesArchive[0].archived = false);
+    this.setState({ ActiveNotes });
+    this.setState({
+      lists: this.state.unFilteredList.filter(
+        (lists) => lists.archived === true
+      ),
+    });
+  }
+
   onSearchTypeHandler(NotesOptions) {
     const defaultValue = (this.state.projectList = this.state.unFilteredList);
     if (NotesOptions === "ActiveNotes") {
@@ -89,7 +119,12 @@ class App extends Component {
             notes={this.state.lists}
             getData={this.onGetDataHandler}
           />
-          <ItemContainer viewData={this.state.viewData} />
+          <ItemContainer
+            viewData={this.state.viewData}
+            onArchive={this.onArchivedHandler}
+            onActive={this.onUndoArchivedHandler}
+            onDelete={this.onDeleteHandler}
+          />
         </div>
         <Modal addnote={this.onAddNoteHandler} />
       </div>
