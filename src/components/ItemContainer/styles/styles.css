@@ -8,13 +8,24 @@
 .item-data-card {
   height: 80vh;
 }
-.item-body-title {
+.item-body-header {
   margin: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.item-body-title:nth-child(1) {
+  order: 0;
+  flex: 1 1 auto;
+  align-self: auto;
 }
 .item-body-date {
   margin: 25px;
   display: flex;
-  border-bottom: 1px rgba(255, 255, 255, 0.10) solid;
+  border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
   width: 100%;
 }
 .bi-calendar3 {

@@ -1,0 +1,28 @@
+.dropdown > .dropdown-btn {
+  color: white;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dropdown-menu {
+  --bs-dropdown-color: white !important;
+  --bs-dropdown-bg: #333333 !important;
+  border: none !important;
+}
+.dropdown-item {
+  color: white !important;
+  font-size: 20px;
+}
+.dropdown-item:hover {
+  background-color: #181818 !important;
+}
+.bi-archive {
+    color: white !important;
+    font-size: 20px;
+    margin-right: 20px;
+}
+.bi-trash {
+    color: white !important;
+    font-size: 20px;
+    margin-right: 20px;
+}
