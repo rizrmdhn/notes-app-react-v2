@@ -1,5 +1,5 @@
 .modal {
-  --bs-modal-bg: #181d31 !important;
+  --bs-modal-bg: #181818 !important;
 }
 .title-input {
   margin: 25px;
@@ -26,12 +26,12 @@
   background-color: #4d0000;
 }
 #submit-note-btn {
-  background-color: #272f4e;
+  background-color: #242424;
   color: white;
   transition: 250ms ease-in-out;
 }
 #submit-note-btn:hover {
-  background-color: #47558d;
+  background-color: #312eb5;
 }
 .close-btn {
   background-color: transparent;

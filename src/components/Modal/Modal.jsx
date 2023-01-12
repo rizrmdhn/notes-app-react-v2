@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import "./styles/style.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default class Modal extends Component {
   constructor(props) {
@@ -34,14 +38,34 @@ export default class Modal extends Component {
   }
 
   onSubmitChangeEventHandler(event) {
-    event.preventDefault();
-    this.props.addnote(this.state);
-    this.setState(() => {
-      return {
-        title: "",
-        body: "",
-      };
-    });
+    // checking the state of the form
+    if (this.state.title === "" || this.state.body === "") {
+      // if the form is empty, then show the alert
+      MySwal.fire({
+        title: "Oops...",
+        text: "Please fill the form!",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+      return;
+    } else {
+      // if the form is not empty, then add the note
+      event.preventDefault();
+      this.props.addnote(this.state);
+      // then clearing the form
+      this.setState(() => {
+        return {
+          title: "",
+          body: "",
+        };
+      });
+    }
+
+    // removing the modal and the backdrop
+    const backdrop = document.getElementsByClassName("modal-backdrop");
+    const modal = document.getElementById("addNoteModal");
+    modal.classList.remove("show");
+    backdrop[0].classList.remove("show");
   }
 
   render() {
@@ -78,9 +102,9 @@ export default class Modal extends Component {
                   className="form-control"
                   id="title-input"
                   placeholder="Ini adalah judul ..."
-                  required
                   value={this.state.title}
                   onChange={this.onTitleChangeEventHandler}
+                  required
                 />
               </div>
               <div className="note-input">
@@ -89,9 +113,9 @@ export default class Modal extends Component {
                   className="form-control"
                   id="note-input"
                   placeholder="Tuliskan Catatanmu di sini ..."
-                  required
                   value={this.state.body}
                   onChange={this.onBodyChangeEventHandler}
+                  required
                 />
               </div>
             </div>
@@ -108,7 +132,7 @@ export default class Modal extends Component {
                 type="button"
                 id="submit-note-btn"
                 className="add-note btn"
-                data-bs-dismiss="modal"
+                // data-bs-dismiss="modal"
                 onClick={this.onSubmitChangeEventHandler}
               >
                 Add Note
