@@ -21,6 +21,14 @@ class App extends Component {
     this.onGetDataHandler = this.onGetDataHandler.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      lists: this.state.unFilteredList.filter(
+        (lists) => lists.archived === false
+      ),
+    });
+  }
+
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
       return {
