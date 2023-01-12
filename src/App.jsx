@@ -63,6 +63,7 @@ class App extends Component {
   onDeleteHandler(id) {
     const lists = this.state.lists.filter((list) => list.id !== id);
     this.setState({ lists });
+    this.setState({ viewData: [] });
   }
 
   onArchivedHandler(id) {
