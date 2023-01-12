@@ -3,7 +3,7 @@ import "./styles/styles.css";
 import UnAvaliableNote from "./UnAvaliableNote/UnAvaliableActiveNote";
 import ItemContainer from "./views/ItemContainer";
 
-export default function ItemListContainer({ notes }) {
+export default function ItemListContainer({ notes, getData }) {
   return (
     <div className="item-list-container">
       {notes.length !== 0 ? (
@@ -16,6 +16,7 @@ export default function ItemListContainer({ notes }) {
               title={note.title}
               date={note.createdAt}
               body={note.body}
+              getData={getData}
             />
           ))}
         </div>

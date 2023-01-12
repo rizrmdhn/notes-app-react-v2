@@ -1,0 +1,13 @@
+.select-note-container {
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    text-align: center;
+}
+.select-note-subtitle {
+    width: 500px;
+}

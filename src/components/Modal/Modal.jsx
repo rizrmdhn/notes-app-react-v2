@@ -60,7 +60,6 @@ export default class Modal extends Component {
         };
       });
     }
-
     // removing the modal and the backdrop
     const backdrop = document.getElementsByClassName("modal-backdrop");
     const modal = document.getElementById("addNoteModal");

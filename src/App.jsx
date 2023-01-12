@@ -13,10 +13,12 @@ class App extends Component {
     this.state = {
       lists: getInitialData(),
       unFilteredList: getInitialData(),
+      viewData: [],
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
     this.onSearchTypeHandler = this.onSearchTypeHandler.bind(this);
+    this.onGetDataHandler = this.onGetDataHandler.bind(this);
   }
 
   onAddNoteHandler({ title, body }) {
@@ -48,8 +50,7 @@ class App extends Component {
   }
 
   onSearchTypeHandler(NotesOptions) {
-    const defaultValue = (this.state.projectList =
-      this.state.unFilteredList);
+    const defaultValue = (this.state.projectList = this.state.unFilteredList);
     if (NotesOptions === "ActiveNotes") {
       this.setState({
         lists: this.state.unFilteredList.filter(
@@ -65,14 +66,23 @@ class App extends Component {
       });
     }
   }
+
+  onGetDataHandler(notes) {
+    this.setState({ viewData: notes });
+    console.log(this.state.viewData);
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <div className="body-container">
           <MenuContainer onSearchType={this.onSearchTypeHandler} />
-          <ItemListContainer notes={this.state.lists} />
-          <ItemContainer />
+          <ItemListContainer
+            notes={this.state.lists}
+            getData={this.onGetDataHandler}
+          />
+          <ItemContainer viewData={this.state.viewData} />
         </div>
         <Modal addnote={this.onAddNoteHandler} />
       </div>
