@@ -1,28 +1,25 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import ArchivedNote from "./ArchivedNoteContainer/ArchivedNote";
 import "./styles/styles.css";
-import UnAvaliableNote from "./UnAvaliableNote/UnAvaliableActiveNote";
-import ItemContainer from "./views/ItemContainer";
+import UnArchivedNote from "./UnArchivedNoteContainer/UnArchivedNote";
 
 export default function ItemListContainer({ notes, getData }) {
+  const activeNotes = notes.filter((note) => note.archived === false);
+  const archiveNotes = notes.filter((note) => note.archived === true);
+
   return (
     <div className="item-list-container">
-      {notes.length !== 0 ? (
-        <div className="item-list">
-          {notes.map((note) => (
-            <ItemContainer
-              key={note.id}
-              id={note.id}
-              notes={note}
-              title={note.title}
-              date={note.createdAt}
-              body={note.body}
-              getData={getData}
-            />
-          ))}
-        </div>
-      ) : (
-        <UnAvaliableNote />
-      )}
+        <Routes>
+          <Route
+            path="/"
+            element={<ArchivedNote notes={activeNotes} getData={getData} />}
+          />
+          <Route
+            path="/Archived"
+            element={<UnArchivedNote notes={archiveNotes} getData={getData} />}
+          />
+        </Routes>
     </div>
   );
 }

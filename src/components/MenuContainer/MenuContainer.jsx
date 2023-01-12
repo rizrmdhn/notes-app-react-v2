@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/styles.css";
 
 export default function MenuContainer({ onSearchType }) {
@@ -17,32 +18,23 @@ export default function MenuContainer({ onSearchType }) {
           <i className="bi bi-plus-lg"></i> Add Note
         </button>
       </div>
-      <div className="option-container" onChange={onSearchTypeProject}>
-        <div className="ActiveNotes-option form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="NotesOptions"
-            id="ActiveNotes"
-            value="ActiveNotes"
-            defaultChecked
-          />
-          <label className="ActiveNotes-form-label form-check-label" htmlFor="ActiveNotes">
-            Active Notes
-          </label>
-        </div>
-        <div className="ArchivedNotes-option form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="NotesOptions"
-            id="ArchivedNotes"
-            value="ArchivedNotes"
-          />
-          <label className="ArchivedNotes-form-label form-check-label" htmlFor="ArchivedNotes">
-            Archived Notes
-          </label>
-        </div>
+      <div className="option-container">
+        <ul className="nav flex-column">
+          <li className="nav-item">
+            <Link className="nav-link" to="/">
+              <button className="ActiveNotes-option link-button">
+                Active Notes
+              </button>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/Archived">
+              <button className="ArchivedNotes-option link-button">
+                Archived Notes
+              </button>
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );

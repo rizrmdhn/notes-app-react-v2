@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { getInitialData } from "../src/utils";
 import Header from "./components/Header/Header";
 import ItemContainer from "./components/ItemContainer/ItemContainer";
@@ -22,14 +23,6 @@ class App extends Component {
     this.onUndoArchivedHandler = this.onUndoArchivedHandler.bind(this);
     this.onSearchTypeHandler = this.onSearchTypeHandler.bind(this);
     this.onGetDataHandler = this.onGetDataHandler.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      lists: this.state.unFilteredList.filter(
-        (lists) => lists.archived === false
-      ),
-    });
   }
 
   onAddNoteHandler({ title, body }) {
@@ -70,22 +63,12 @@ class App extends Component {
     const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
     const ArcivedNotes = (NotesArchive[0].archived = true);
     this.setState({ ArcivedNotes });
-    this.setState({
-      lists: this.state.unFilteredList.filter(
-        (lists) => lists.archived === false
-      ),
-    });
   }
 
   onUndoArchivedHandler(id) {
     const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
     const ActiveNotes = (NotesArchive[0].archived = false);
     this.setState({ ActiveNotes });
-    this.setState({
-      lists: this.state.unFilteredList.filter(
-        (lists) => lists.archived === true
-      ),
-    });
   }
 
   onSearchTypeHandler(NotesOptions) {
@@ -113,20 +96,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div className="body-container">
-          <MenuContainer onSearchType={this.onSearchTypeHandler} />
-          <ItemListContainer
-            notes={this.state.lists}
-            getData={this.onGetDataHandler}
-          />
-          <ItemContainer
-            viewData={this.state.viewData}
-            onArchive={this.onArchivedHandler}
-            onActive={this.onUndoArchivedHandler}
-            onDelete={this.onDeleteHandler}
-          />
-        </div>
+        <BrowserRouter>
+          <Header />
+          <div className="body-container">
+            <MenuContainer onSearchType={this.onSearchTypeHandler} />
+            <ItemListContainer
+              notes={this.state.lists}
+              getData={this.onGetDataHandler}
+            />
+            <ItemContainer
+              viewData={this.state.viewData}
+              onArchive={this.onArchivedHandler}
+              onActive={this.onUndoArchivedHandler}
+              onDelete={this.onDeleteHandler}
+            />
+          </div>
+        </BrowserRouter>
         <Modal addnote={this.onAddNoteHandler} />
       </div>
     );

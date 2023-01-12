@@ -23,30 +23,31 @@
   font-size: 20px;
 }
 .option-container {
+  width: 350px;
   background-color: #181818;
-  margin: 50px;
+  margin: 20px;
   padding: 15px;
   border-radius: 0.375rem;
 }
-.ActiveNotes-option > .form-check-input,
-.ActiveNotes-form-label {
-  margin-left: 10px !important;
-}
-.ArchivedNotes-option > .form-check-input,
-.ArchivedNotes-form-label {
-  margin-left: 10px !important;
-}
 .ActiveNotes-option {
+  width: 250px;
+  color: white;
   padding: 10px;
   margin-bottom: 25px !important;
   transition: 250ms ease-in-out;
+  border: none;
   border-radius: 10px;
+  background-color: #242424;
 }
 .ArchivedNotes-option {
+  width: 250px;
+  color: white;
   padding: 10px;
   margin-bottom: 25px !important;
   transition: 250ms ease-in-out;
+  border: none;
   border-radius: 10px;
+  background-color: #242424;
 }
 .ActiveNotes-option:hover {
   background-color: #312eb5;
