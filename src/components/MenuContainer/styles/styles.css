@@ -1,13 +1,15 @@
 .menu-container {
+  display: flex;
+  flex-direction: column;
   margin: 0px 25px;
   width: 350px;
 }
 .logo-container {
-  margin: 25px auto;
+  margin: 25px 25px;
 }
 .add-note-container {
   margin: auto;
-  margin-top: 125px;
+  margin-top: 50px;
   margin-bottom: 35px;
   text-align: center;
 }
@@ -67,7 +69,7 @@
   cursor: pointer;
 }
 .search-container {
-  margin: auto;
+  margin: 25px;
   text-align: center;
 }
 .search-container > .search-form {
@@ -84,4 +86,40 @@
   outline: none;
   background-color: #242424;
   color: white;
+}
+@media screen and (max-width: 1366px) {
+  .menu-container {
+    margin: 0px 25px;
+    width: 225px;
+  }
+  .logo-container {
+    margin: 25px auto;
+  }
+  .add-note-container {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 35px;
+    text-align: center;
+  }
+  .option-container {
+    width: 250px;
+    background-color: #181818;
+    margin: auto;
+    padding: 0px;
+    border-radius: 0.375rem;
+  }
+  .search-container {
+    margin: 25px auto;
+    text-align: center;
+  }
+  .nav {
+    --bs-nav-link-padding-x: 0px !important;
+    --bs-nav-link-padding-y: 0px !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .menu-container {
+    margin: 25px 0px;
+    width: 100%;
+  }
 }

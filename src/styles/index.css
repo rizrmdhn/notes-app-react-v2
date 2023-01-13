@@ -15,11 +15,12 @@ body {
   overflow: hidden;
 }
 .body-container {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
 }
@@ -37,4 +38,25 @@ body {
   order: 0;
   flex: 1 1 auto;
   align-self: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .body-container {
+    flex-direction: column;
+  }
+  .menu-container:nth-child(1) {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+  }
+  .item-list-container:nth-child(2) {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+  }
+  .item-container:nth-child(3) {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+  }
 }

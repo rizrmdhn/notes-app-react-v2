@@ -21,6 +21,7 @@ class ItemCard extends Component {
     this.interval = setInterval(
       () =>
         this.setState({
+          createdAt: this.props.createdAt,
           archived: this.props.archived,
         }),
       1000
@@ -42,10 +43,9 @@ class ItemCard extends Component {
     // check if the body value is the same as the props body value
     if (this.state.body === this.props.body) {
       return;
-    } else {
-      event.preventDefault();
-      this.props.editnote(this.state);
     }
+    event.preventDefault();
+    this.props.editnote(this.state);
   }
 
   render() {

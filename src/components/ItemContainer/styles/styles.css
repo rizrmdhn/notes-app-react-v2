@@ -2,7 +2,7 @@
   margin: 0px 25px;
 }
 .item-card-container {
-  width: 1000px;
+  width: 100%;
   height: 90vh;
 }
 .item-data-card {
@@ -111,5 +111,41 @@
   background-color: inherit;
   color: inherit;
   border: none;
-  height: 50vh;
+  height: 40vh;
+}
+
+/* create responsive for width 1366px */
+@media screen and (max-width: 1366px) {
+  .item-container {
+    display: flex;
+  }
+  .item-card-container {
+    width: 100%;
+    height: 90vh;
+  }
+  .item-body-container > .item-body {
+    height: 90vh;
+  }
+  .text-body-area {
+    background-color: inherit;
+    color: inherit;
+    border: none;
+    height: 30vh;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .item-container {
+    margin: 0px;
+    display: flex;
+  }
+  .item-card-container {
+    width: 100%;
+    height: 90vh;
+  }
+  .text-body-area {
+    background-color: inherit;
+    color: inherit;
+    border: none;
+    height: 100%;
+  }
 }

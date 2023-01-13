@@ -83,6 +83,8 @@ class App extends Component {
     const ArcivedNotes = (NotesArchive[0].archived = true);
     this.setState({ ArcivedNotes });
 
+    this.state.viewData.archived = true;
+
     toast.fire({
       icon: "success",
       title: "Note has been archived",
@@ -93,6 +95,8 @@ class App extends Component {
     const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
     const ActiveNotes = (NotesArchive[0].archived = false);
     this.setState({ ActiveNotes });
+
+    this.state.viewData.archived = false;
 
     toast.fire({
       icon: "success",
@@ -115,7 +119,7 @@ class App extends Component {
 
   onEditDataHandler({ id, title, body, createdAt, archived }) {
     createdAt = Date.now();
-    const index = this.state.lists.findIndex((book) => book.id === id);
+    const index = this.state.lists.findIndex((note) => note.id === id);
     if (index === -1) {
       // throw an error
       MySwal.fire({
@@ -152,7 +156,16 @@ class App extends Component {
         };
         return { lists: newLists };
       });
+      const newViewData = {
+        id,
+        title,
+        body,
+        createdAt,
+        archived,
+      };
+      this.setState({ viewData: newViewData });
     }
+    console.log(this.state.viewData);
   }
 
   onGetDataHandler(notes) {
