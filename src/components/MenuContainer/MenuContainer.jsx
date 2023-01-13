@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/styles.css";
 
-export default function MenuContainer() {
+export default function MenuContainer({ onSearch }) {
+  const onSearchProject = (event) => {
+    onSearch(event.target.value);
+  };
   return (
     <div className="menu-container">
       <div className="logo-container">
@@ -20,7 +23,8 @@ export default function MenuContainer() {
       </div>
       <div className="search-container">
         <input
-          type="text"
+          onChange={onSearchProject}
+          type="search"
           className="search-form form-control"
           id="search-input"
           placeholder="Search Notes ... "

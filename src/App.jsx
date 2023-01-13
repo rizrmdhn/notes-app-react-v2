@@ -25,7 +25,7 @@ class App extends Component {
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchivedHandler = this.onArchivedHandler.bind(this);
     this.onUndoArchivedHandler = this.onUndoArchivedHandler.bind(this);
-    this.onSearchTypeHandler = this.onSearchTypeHandler.bind(this);
+    this.onSearchHandler = this.onSearchHandler.bind(this);
     this.onEditDataHandler = this.onEditDataHandler.bind(this);
     this.onGetDataHandler = this.onGetDataHandler.bind(this);
   }
@@ -76,21 +76,16 @@ class App extends Component {
     this.setState({ ActiveNotes });
   }
 
-  onSearchTypeHandler(NotesOptions) {
-    const defaultValue = (this.state.projectList = this.state.unFilteredList);
-    if (NotesOptions === "ActiveNotes") {
+  onSearchHandler(search) {
+    const defaultValue = (this.state.lists = this.state.unFilteredList);
+    if (search.length !== 0 && search.trim() !== "") {
       this.setState({
-        lists: this.state.unFilteredList.filter(
-          (lists) => lists.archived === false
+        lists: this.state.lists.filter((list) =>
+          list.title.toLowerCase().includes(search.toLowerCase())
         ),
       });
-      return defaultValue;
     } else {
-      this.setState({
-        lists: this.state.unFilteredList.filter(
-          (lists) => lists.archived === true
-        ),
-      });
+      this.setState({ lists: defaultValue });
     }
   }
 
@@ -147,7 +142,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div className="body-container">
-            <MenuContainer onSearchType={this.onSearchTypeHandler} />
+            <MenuContainer onSearch={this.onSearchHandler} />
             <ItemListContainer
               notes={this.state.lists}
               getData={this.onGetDataHandler}
