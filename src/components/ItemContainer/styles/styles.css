@@ -111,7 +111,7 @@
   background-color: inherit;
   color: inherit;
   border: none;
-  height: 40vh;
+  height: 100%;
 }
 
 /* create responsive for width 1366px */
@@ -130,7 +130,7 @@
     background-color: inherit;
     color: inherit;
     border: none;
-    height: 30vh;
+    height: 100%;
   }
 }
 @media screen and (max-width: 1000px) {

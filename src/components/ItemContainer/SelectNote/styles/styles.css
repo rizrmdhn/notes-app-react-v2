@@ -1,5 +1,6 @@
 .select-note-container {
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -10,4 +11,9 @@
 }
 .select-note-subtitle {
     width: 500px;
+}
+@media screen and (max-width: 550px) {
+    .select-note-subtitle {
+        width: 100%;
+    }
 }

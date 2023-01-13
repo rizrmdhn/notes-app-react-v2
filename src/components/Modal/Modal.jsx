@@ -94,7 +94,7 @@ export default class Modal extends Component {
             <div className="modal-body">
               <div className="title-input">
                 <label htmlFor="title-input" className="form-label">
-                  Sisa Karakter: {this.state.limit - this.state.title.length}
+                  Sisa Karakter Judul: {this.state.limit - this.state.title.length}
                 </label>
                 <input
                   type="text"
