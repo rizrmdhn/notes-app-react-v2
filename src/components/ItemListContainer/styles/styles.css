@@ -1,13 +1,13 @@
 .item-list-container {
-  margin: 25px;
+  margin: 0px 25px;
   background-color: #1c1c1c;
   width: 395px;
   height: auto;
 }
 .item-list {
-  margin: 25px auto;
+  margin: 50px auto;
   overflow-y: scroll;
-  height: 75vh;
+  height: 85vh;
 }
 .item-card {
   height: 100px;
@@ -18,10 +18,11 @@
   cursor: pointer;
 }
 .item-card > .card-title {
-  margin-left: -10px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 .item-card:hover {
-  background-color: #312EB5;
+  background-color: #312eb5;
 }
 .item-card > .card-body {
   height: 125px;
@@ -38,4 +39,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.item-list-header {
+  margin: 25px;
 }

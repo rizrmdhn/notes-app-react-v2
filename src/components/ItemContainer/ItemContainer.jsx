@@ -8,6 +8,7 @@ export default function ItemContainer({
   onArchive,
   onActive,
   onDelete,
+  editnote,
 }) {
   return (
     <div className="item-container">
@@ -22,6 +23,7 @@ export default function ItemContainer({
           onArchive={onArchive}
           onActive={onActive}
           onDelete={onDelete}
+          editnote={editnote}
         />
       ) : (
         <SelectNote />

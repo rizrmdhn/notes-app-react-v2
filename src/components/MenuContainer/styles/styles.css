@@ -1,8 +1,13 @@
 .menu-container {
-  margin: 25px;
+  margin: 0px 25px;
   width: 350px;
 }
+.logo-container {
+  margin: 25px auto;
+}
 .add-note-container {
+  margin: auto;
+  margin-top: 125px;
   margin-bottom: 35px;
   text-align: center;
 }
@@ -60,4 +65,23 @@
 }
 .ArchivedNotes-form-label:hover {
   cursor: pointer;
+}
+.search-container {
+  margin: auto;
+  text-align: center;
+}
+.search-container > .search-form {
+  width: 250px;
+  height: 50px;
+  color: white;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: #242424;
+  border: none;
+}
+.search-container > .search-form:focus {
+  outline: none;
+  background-color: #242424;
+  color: white;
 }

@@ -5,6 +5,9 @@ import ItemContainer from "../views/ItemContainer";
 export default function UnArchivedNote({ notes, getData }) {
   return (
     <>
+      <div className="item-list-header">
+        <h1>Archived Notes</h1>
+      </div>
       {notes.length !== 0 ? (
         <div className="item-list">
           {notes.map((note) => (

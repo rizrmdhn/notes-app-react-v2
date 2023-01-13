@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/styles.css";
 
-export default function MenuContainer({ onSearchType }) {
-  const onSearchTypeProject = (event) => {
-    onSearchType(event.target.value);
-  };
+export default function MenuContainer() {
   return (
     <div className="menu-container">
+      <div className="logo-container">
+        <h1 className="logo">Note App</h1>
+      </div>
       <div className="add-note-container">
         <button
           type="button"
@@ -17,6 +17,14 @@ export default function MenuContainer({ onSearchType }) {
         >
           <i className="bi bi-plus-lg"></i> Add Note
         </button>
+      </div>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-form form-control"
+          id="search-input"
+          placeholder="Search Notes ... "
+        />
       </div>
       <div className="option-container">
         <ul className="nav flex-column">

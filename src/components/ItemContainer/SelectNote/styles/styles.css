@@ -1,5 +1,5 @@
 .select-note-container {
-    height: 75vh;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

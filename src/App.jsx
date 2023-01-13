@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { getInitialData } from "../src/utils";
-import Header from "./components/Header/Header";
 import ItemContainer from "./components/ItemContainer/ItemContainer";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import MenuContainer from "./components/MenuContainer/MenuContainer";
 import Modal from "./components/Modal/Modal";
 import "./styles/index.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +18,7 @@ class App extends Component {
       lists: getInitialData(),
       unFilteredList: getInitialData(),
       viewData: [],
+      editData: [],
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
@@ -22,6 +26,7 @@ class App extends Component {
     this.onArchivedHandler = this.onArchivedHandler.bind(this);
     this.onUndoArchivedHandler = this.onUndoArchivedHandler.bind(this);
     this.onSearchTypeHandler = this.onSearchTypeHandler.bind(this);
+    this.onEditDataHandler = this.onEditDataHandler.bind(this);
     this.onGetDataHandler = this.onGetDataHandler.bind(this);
   }
 
@@ -89,15 +94,58 @@ class App extends Component {
     }
   }
 
+  onEditDataHandler({ id, title, body, createdAt, archived }) {
+    createdAt = Date.now();
+    const index = this.state.lists.findIndex((book) => book.id === id);
+    if (index === -1) {
+      // throw an error
+      MySwal.fire({
+        title: "Error!",
+        text: "Please enter a title",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+    if (!body) {
+      // throw an error
+      MySwal.fire({
+        title: "Error!",
+        text: "Please enter a body",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      MySwal.fire({
+        title: "Success!",
+        text: "Note has been updated",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+      /* This is a way to update the state of a component. */
+      this.setState((prevState) => {
+        const newLists = [...prevState.lists];
+        newLists[index] = {
+          id,
+          title,
+          body,
+          createdAt,
+          archived,
+        };
+        return { lists: newLists };
+      });
+    }
+    console.log(id, title, body, createdAt, archived);
+  }
+
   onGetDataHandler(notes) {
     this.setState({ viewData: notes });
+    this.setState({ editData: notes });
   }
 
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Header />
           <div className="body-container">
             <MenuContainer onSearchType={this.onSearchTypeHandler} />
             <ItemListContainer
@@ -109,6 +157,7 @@ class App extends Component {
               onArchive={this.onArchivedHandler}
               onActive={this.onUndoArchivedHandler}
               onDelete={this.onDeleteHandler}
+              editnote={this.onEditDataHandler}
             />
           </div>
         </BrowserRouter>
