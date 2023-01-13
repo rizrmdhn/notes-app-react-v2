@@ -7,7 +7,7 @@
 .item-list {
   margin: 50px auto;
   overflow-y: scroll;
-  height: 85vh;
+  height: 80vh;
 }
 .item-card {
   height: 100px;

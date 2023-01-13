@@ -11,6 +11,20 @@ import withReactContent from "sweetalert2-react-content";
 
 const MySwal = withReactContent(Swal);
 
+const toast = MySwal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  background: "#181818",
+  color: "#fff",
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", MySwal.stopTimer);
+    toast.addEventListener("mouseleave", MySwal.resumeTimer);
+  },
+});
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -68,12 +82,22 @@ class App extends Component {
     const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
     const ArcivedNotes = (NotesArchive[0].archived = true);
     this.setState({ ArcivedNotes });
+
+    toast.fire({
+      icon: "success",
+      title: "Note has been archived",
+    });
   }
 
   onUndoArchivedHandler(id) {
     const NotesArchive = this.state.lists.filter((lists) => lists.id === id);
     const ActiveNotes = (NotesArchive[0].archived = false);
     this.setState({ ActiveNotes });
+
+    toast.fire({
+      icon: "success",
+      title: "Note has been unarchived",
+    });
   }
 
   onSearchHandler(search) {
@@ -129,7 +153,6 @@ class App extends Component {
         return { lists: newLists };
       });
     }
-    console.log(id, title, body, createdAt, archived);
   }
 
   onGetDataHandler(notes) {

@@ -17,6 +17,19 @@ class ItemCard extends Component {
     this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
   }
 
+  componentDidMount() {
+    this.interval = setInterval(
+      () =>
+        this.setState({
+          archived: this.props.archived,
+        }),
+      1000
+    );
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   onBodyChangeEventHandler(event) {
     this.setState(() => {
       return {
@@ -24,9 +37,15 @@ class ItemCard extends Component {
       };
     });
   }
+
   onEditDatas(event) {
-    event.preventDefault();
-    this.props.editnote(this.state);
+    // check if the body value is the same as the props body value
+    if (this.state.body === this.props.body) {
+      return;
+    } else {
+      event.preventDefault();
+      this.props.editnote(this.state);
+    }
   }
 
   render() {
