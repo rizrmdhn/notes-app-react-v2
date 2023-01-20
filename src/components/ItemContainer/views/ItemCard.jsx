@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import ItemBody from "./ItemBody";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 class ItemCard extends Component {
   constructor(props) {
@@ -30,6 +34,17 @@ class ItemCard extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+  componentDidUpdate() {
+    if (this.state.body !== this.props.body) {
+      const editButton = document.querySelector(".edit-btn");
+      editButton.classList.remove("hide-button");
+      editButton.removeAttribute("disabled");
+    } else {
+      const editButton = document.querySelector(".edit-btn");
+      editButton.classList.add("hide-button");
+      editButton.setAttribute("disabled", "disabled");
+    }
+  }
 
   onBodyChangeEventHandler(event) {
     this.setState(() => {
@@ -42,10 +57,15 @@ class ItemCard extends Component {
   onEditDatas(event) {
     // check if the body value is the same as the props body value
     if (this.state.body === this.props.body) {
-      return;
+      return MySwal.fire({
+        title: "No Changes",
+        text: "You didn't make any changes",
+        icon: "info",
+      });
+    } else {
+      event.preventDefault();
+      this.props.editnote(this.state);
     }
-    event.preventDefault();
-    this.props.editnote(this.state);
   }
 
   render() {

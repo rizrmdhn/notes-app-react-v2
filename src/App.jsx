@@ -44,6 +44,8 @@ class App extends Component {
     this.onGetDataHandler = this.onGetDataHandler.bind(this);
   }
 
+  componentDidUpdate() {}
+
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
       return {
@@ -168,7 +170,15 @@ class App extends Component {
     console.log(this.state.viewData);
   }
 
-  onGetDataHandler(notes) {
+  onGetDataHandler(notes, id) {
+    document.getElementById(`card-${id}`).classList.add("item-card-active");
+
+    const ItemCard = document.querySelectorAll(".item-card");
+    ItemCard.forEach((item) => {
+      if (item.id !== `card-${id}`) {
+        item.classList.remove("item-card-active");
+      }
+    });
     this.setState({ viewData: notes });
     this.setState({ editData: notes });
   }

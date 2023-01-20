@@ -87,6 +87,9 @@
   background-color: #242424;
   color: white;
 }
+.ActiveButton {
+  background-color: #312eb5;
+}
 @media screen and (max-width: 1366px) {
   .menu-container {
     margin: 0px 25px;

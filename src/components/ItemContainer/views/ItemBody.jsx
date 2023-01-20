@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { showFormattedDate } from "../../../utils";
 import DropDownMenu from "../DropDown/DropDownMenu";
 
@@ -52,7 +52,7 @@ export default function ItemBody({
           ></textarea>
         </div>
         <div className="item-body-footer">
-          <button className="edit-btn" onClick={onSaveDatas}>
+          <button className="edit-btn hide-button" onClick={onSaveDatas}>
             Save Changes
           </button>
         </div>

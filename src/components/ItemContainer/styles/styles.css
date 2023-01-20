@@ -42,7 +42,7 @@
   border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
   width: 100%;
 }
-.bi-folder{
+.bi-folder {
   margin-right: 25px;
 }
 .folder-location {
@@ -112,6 +112,10 @@
   color: inherit;
   border: none;
   height: 100%;
+}
+.hide-button {
+  opacity: 0;
+  cursor: default !important;
 }
 
 /* create responsive for width 1366px */

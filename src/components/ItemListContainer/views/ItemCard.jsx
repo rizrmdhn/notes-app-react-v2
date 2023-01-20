@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function ItemCard({ getData, notes, title, date, body }) {
+export default function ItemCard({ id, getData, notes, title, date, body }) {
   const actionButton = () => {
-    getData(notes);
-  }
+    getData(notes, id);
+  };
   return (
-    <div className="item-card" onClick={actionButton}>
+    <div id={`card-${id}`} className="item-card" onClick={actionButton}>
       <div className="card-title">
         <h1 className="title fs-5">{title}</h1>
       </div>

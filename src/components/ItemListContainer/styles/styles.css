@@ -16,6 +16,7 @@
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 .item-card > .card-title {
   margin-left: 10px;
@@ -42,6 +43,9 @@
 }
 .item-list-header {
   margin: 25px;
+}
+.item-card-active {
+  background-color: #312eb5;
 }
 @media screen and (max-width: 1366px) {
   .item-list-container {
