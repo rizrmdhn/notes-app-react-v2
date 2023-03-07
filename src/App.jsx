@@ -40,8 +40,6 @@ class App extends Component {
     autoBind(this);
   }
 
-  componentDidUpdate() {}
-
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
       return {
@@ -51,7 +49,7 @@ class App extends Component {
             id: +new Date(),
             title,
             body,
-            createdAt: Date.now(),
+            createdAt: new Date().toISOString(),
             archived: false,
           },
         ],
@@ -62,7 +60,7 @@ class App extends Component {
             id: +new Date(),
             title,
             body,
-            createdAt: Date.now(),
+            createdAt: new Date().toISOString(),
             archived: false,
           },
         ],
@@ -73,7 +71,7 @@ class App extends Component {
   onDeleteHandler(id) {
     const lists = this.state.lists.filter((list) => list.id !== id);
     this.setState({ lists });
-    this.setState({ viewData: [] });
+    this.setState({ viewData: {} });
   }
 
   onArchivedHandler(id) {
