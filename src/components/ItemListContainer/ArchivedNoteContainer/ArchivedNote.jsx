@@ -1,8 +1,9 @@
 import React from "react";
 import UnAvaliableNote from "../UnAvaliableNote/UnAvaliableActiveNote";
 import ItemContainer from "../views/ItemContainer";
+import PropTypes from "prop-types";
 
-export default function ArchivedNote({ notes, getData }) {
+function ArchivedNote({ notes, getData }) {
   return (
     <>
       <div className="item-list-header">
@@ -28,3 +29,10 @@ export default function ArchivedNote({ notes, getData }) {
     </>
   );
 }
+
+ArchivedNote.propTypes = {
+  notes: PropTypes.array.isRequired,
+  getData: PropTypes.func.isRequired,
+};
+
+export default ArchivedNote;

@@ -2,17 +2,12 @@ import React from "react";
 import SelectNote from "./SelectNote/SelectNote";
 import "./styles/styles.css";
 import ItemCard from "./views/ItemCard";
+import PropTypes from "prop-types";
 
-export default function ItemContainer({
-  viewData,
-  onArchive,
-  onActive,
-  onDelete,
-  editnote,
-}) {
+function ItemContainer({ viewData, onArchive, onActive, onDelete, editnote }) {
   return (
     <div className="item-container">
-      {viewData.length !== 0 ? (
+      {Object.keys(viewData).length !== 0 ? (
         <ItemCard
           key={viewData.id}
           id={viewData.id}
@@ -31,3 +26,9 @@ export default function ItemContainer({
     </div>
   );
 }
+
+ItemContainer.propTypes = {
+  viewData: PropTypes.object.isRequired,
+};
+
+export default ItemContainer;

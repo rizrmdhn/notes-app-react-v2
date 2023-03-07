@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { showFormattedDate } from "../../../utils";
 import DropDownMenu from "../DropDown/DropDownMenu";
+import PropTypes from "prop-types";
 
-export default function ItemBody({
+function ItemBody({
   id,
   archived,
   title,
@@ -60,3 +61,18 @@ export default function ItemBody({
     </div>
   );
 }
+
+ItemBody.propTypes = {
+  id: PropTypes.number.isRequired,
+  archived: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onActive: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onSaveDatas: PropTypes.func.isRequired,
+};
+
+export default ItemBody;

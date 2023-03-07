@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/styles.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function MenuContainer({ onSearch }) {
+function MenuContainer({ onSearch }) {
   const location = useLocation();
 
   const onSearchProject = (event) => {
     onSearch(event.target.value);
   };
+
   return (
     <div className="menu-container">
       <div className="logo-container">
@@ -70,3 +72,9 @@ export default function MenuContainer({ onSearch }) {
     </div>
   );
 }
+
+MenuContainer.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
+
+export default MenuContainer;

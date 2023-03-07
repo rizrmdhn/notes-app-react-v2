@@ -8,6 +8,8 @@ import Modal from "./components/Modal/Modal";
 import "./styles/index.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import autoBind from "auto-bind";
+import PropTypes from "prop-types";
 
 const MySwal = withReactContent(Swal);
 
@@ -31,17 +33,11 @@ class App extends Component {
     this.state = {
       lists: getInitialData(),
       unFilteredList: getInitialData(),
-      viewData: [],
+      viewData: {},
       editData: [],
     };
 
-    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onArchivedHandler = this.onArchivedHandler.bind(this);
-    this.onUndoArchivedHandler = this.onUndoArchivedHandler.bind(this);
-    this.onSearchHandler = this.onSearchHandler.bind(this);
-    this.onEditDataHandler = this.onEditDataHandler.bind(this);
-    this.onGetDataHandler = this.onGetDataHandler.bind(this);
+    autoBind(this);
   }
 
   componentDidUpdate() {}
@@ -207,5 +203,12 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  lists: PropTypes.array,
+  unFilteredList: PropTypes.array,
+  viewData: PropTypes.object,
+  editData: PropTypes.array,
+};
 
 export default App;

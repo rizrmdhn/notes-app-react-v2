@@ -1,13 +1,8 @@
 import React from "react";
 import "./styles/styles.css";
+import PropTypes from "prop-types";
 
-export default function DropDownMenu({
-  id,
-  archived,
-  onActive,
-  onArchive,
-  onDelete,
-}) {
+function DropDownMenu({ id, archived, onActive, onArchive, onDelete }) {
   const activeButton = () => {
     onActive(id);
   };
@@ -52,3 +47,13 @@ export default function DropDownMenu({
     </div>
   );
 }
+
+DropDownMenu.propTypes = {
+  id: PropTypes.number.isRequired,
+  archived: PropTypes.bool.isRequired,
+  onActive: PropTypes.func.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+export default DropDownMenu;

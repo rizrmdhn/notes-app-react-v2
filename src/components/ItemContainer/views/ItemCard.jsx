@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ItemBody from "./ItemBody";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import PropTypes from "prop-types";
 
 const MySwal = withReactContent(Swal);
 
@@ -89,5 +90,17 @@ class ItemCard extends Component {
     );
   }
 }
+
+ItemCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  archived: PropTypes.bool.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onActive: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  editnote: PropTypes.func.isRequired,
+};
 
 export default ItemCard;

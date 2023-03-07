@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import "./styles/style.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import PropTypes from "prop-types";
 
 const MySwal = withReactContent(Swal);
 
-export default class Modal extends Component {
+class Modal extends Component {
   constructor(props) {
     super(props);
 
@@ -94,7 +95,8 @@ export default class Modal extends Component {
             <div className="modal-body">
               <div className="title-input">
                 <label htmlFor="title-input" className="form-label">
-                  Sisa Karakter Judul: {this.state.limit - this.state.title.length}
+                  Sisa Karakter Judul:{" "}
+                  {this.state.limit - this.state.title.length}
                 </label>
                 <input
                   type="text"
@@ -143,3 +145,9 @@ export default class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  addnote: PropTypes.func.isRequired,
+};
+
+export default Modal;
